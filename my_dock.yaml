@@ -1,0 +1,21 @@
+version '3'
+
+services:
+apache:
+  build: apache
+  ports:
+    - 8080:80
+  links:
+    - mysql
+
+mysql:
+  build: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=testpw
+    - MYSQL_DATABASE=mydockdb
+  volumes:
+    - db-data:/var/lib/mysql
+  
+volumes:
+  db-data:
+  
