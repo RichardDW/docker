@@ -1,0 +1,17 @@
+version: '3.7' 
+
+  services: 
+      whoami: 
+        image: containous/whoami 
+        container_name: whoami 
+        restart: always 
+        ports: 
+         -8888:80
+      nginx:
+        image: nginx
+        container_name: nginx
+        restart: always
+        ports:
+          -8080:80
+        volumes:
+          data/containers/nginx/data:/usr/share/nginx/html:ro
